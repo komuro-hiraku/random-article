@@ -45,3 +45,13 @@ This application needs environment variables. See below
 - `API_ID`
 - `AFFILIATE_ID`
 
+## For Local
+
+```
+$ export API_ID="XXXXXXX"
+$ export AFFILIATE_ID="YYYYYYYY"
+```
+
+## For Amazon ECS Fargate
+
+T.B.D
