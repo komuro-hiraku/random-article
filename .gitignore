@@ -46,4 +46,4 @@ lsp/
 out/
 
 # ignore
-src/main/resources/application-personal.yml
+*-personal.yml
