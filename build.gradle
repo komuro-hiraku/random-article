@@ -6,7 +6,7 @@ plugins {
 }
 
 group = 'jp.classmethod.sample'
-version = getVersion()
+version = gitVersion()
 sourceCompatibility = '11'
 
 configurations {

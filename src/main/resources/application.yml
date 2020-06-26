@@ -1,0 +1,3 @@
+dmm:
+  affiliate-id: "${AFFILIATE_ID}"
+  api-id: "${API_ID}"

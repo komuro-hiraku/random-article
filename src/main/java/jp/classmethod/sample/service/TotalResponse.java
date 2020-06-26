@@ -2,8 +2,10 @@ package jp.classmethod.sample.service;
 
 import lombok.Data;
 
+/**
+ * Response for DMM API
+ */
 @Data
 public class TotalResponse {
-    private DmmRequest request;
     private DmmResponse result;
 }

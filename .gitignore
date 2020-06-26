@@ -44,3 +44,6 @@ gradle-app.setting
 .idea
 lsp/
 out/
+
+# ignore
+src/main/resources/application-personal.yml
