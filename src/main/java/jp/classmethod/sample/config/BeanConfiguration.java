@@ -4,15 +4,22 @@ import com.fasterxml.jackson.databind.DeserializationFeature;
 import com.fasterxml.jackson.databind.MapperFeature;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.databind.PropertyNamingStrategy;
+import jp.classmethod.sample.repository.DmmItemRepository;
+import jp.classmethod.sample.repository.DmmItemRepositoryImpl;
+import lombok.RequiredArgsConstructor;
 import org.springframework.boot.web.client.RestTemplateBuilder;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.data.redis.core.StringRedisTemplate;
 import org.springframework.web.client.RestOperations;
 
 import java.time.Duration;
 
+@RequiredArgsConstructor
 @Configuration
 public class BeanConfiguration {
+
+    private final StringRedisTemplate stringRedisTemplate;
 
     @Bean
     ObjectMapper objectMapper() {
@@ -29,5 +36,10 @@ public class BeanConfiguration {
                 .setConnectTimeout(Duration.ofSeconds(30))  // 30秒タイムアウト
                 .setReadTimeout(Duration.ofSeconds(30))
                 .build();
+    }
+
+    @Bean
+    DmmItemRepository dmmItemRepository() {
+        return new DmmItemRepositoryImpl(restOperations(), objectMapper(), stringRedisTemplate);
     }
 }
