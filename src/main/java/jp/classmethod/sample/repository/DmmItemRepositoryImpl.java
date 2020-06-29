@@ -71,7 +71,7 @@ public class DmmItemRepositoryImpl implements DmmItemRepository {
         // key を探索して存在しなければRemoteから取得してRedisに叩き込む
         if (redisTemplate.hasKey(key) == Boolean.FALSE) {
             log.info("Not exists cache. Fetch all item from Remote");
-           getAllContents(null).ifPresent( json -> ops.set(key, json, Duration.ofDays(1)));
+            getAllContents(null).ifPresent( json -> ops.set(key, json, Duration.ofDays(1)));
         }
 
         var value = ops.get(key);

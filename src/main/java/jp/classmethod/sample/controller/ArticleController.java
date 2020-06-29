@@ -2,7 +2,6 @@ package jp.classmethod.sample.controller;
 
 import jp.classmethod.sample.service.DmmItem;
 import jp.classmethod.sample.service.DmmService;
-import jp.classmethod.sample.service.TotalResponse;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.http.HttpStatus;
