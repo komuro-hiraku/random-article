@@ -50,8 +50,10 @@ This application needs environment variables. See below
 ## For Local
 
 ```
-$ export API_ID="XXXXXXX"
-$ export AFFILIATE_ID="YYYYYYYY"
+$ export API_ID=XXXXXXX
+$ export AFFILIATE_ID=YYYYYYYY
+$ export REDIS_HOST=localhost
+$ export REDIS_PORT=6379
 ```
 
 ## For Amazon ECS Fargate
