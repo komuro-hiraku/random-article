@@ -42,14 +42,18 @@ Sign up and Get `Affiliate ID` and `API ID`
 
 This application needs environment variables. See below
 
-- `API_ID`
-- `AFFILIATE_ID`
+- `API_ID`: DMM API ID
+- `AFFILIATE_ID`: DMM AFFILIATE ID
+- `REDIS_HOST`: Redis Host URL for Cache
+- `REDIS_PORT`: Redis Port for Cache
 
 ## For Local
 
 ```
-$ export API_ID="XXXXXXX"
-$ export AFFILIATE_ID="YYYYYYYY"
+$ export API_ID=XXXXXXX
+$ export AFFILIATE_ID=YYYYYYYY
+$ export REDIS_HOST=localhost
+$ export REDIS_PORT=6379
 ```
 
 ## For Amazon ECS Fargate
