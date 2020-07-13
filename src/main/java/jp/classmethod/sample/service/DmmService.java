@@ -39,7 +39,7 @@ public class DmmService {
         var items = repository.fetchAllItems();
 
         if (items.size() > 0) {
-            var index = random % items.size();
+            var index = Math.abs(random) % items.size();
             return Optional.of(items.get(index));
         } else {
             return Optional.empty();
