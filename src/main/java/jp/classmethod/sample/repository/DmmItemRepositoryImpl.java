@@ -17,9 +17,7 @@ import java.net.URI;
 import java.time.Duration;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
-import java.util.List;
-import java.util.Locale;
-import java.util.Optional;
+import java.util.*;
 import java.util.stream.Collectors;
 
 @RequiredArgsConstructor
@@ -45,7 +43,7 @@ public class DmmItemRepositoryImpl implements DmmItemRepository {
     private final StringRedisTemplate redisTemplate;
 
     @Override
-    public List<DmmItem> fetchDmmItem(int hits) {
+    public List<DmmItem> fetchDmmItems(int hits) {
 
         try {
             // 全アイテムを取得
@@ -56,8 +54,18 @@ public class DmmItemRepositoryImpl implements DmmItemRepository {
                     .limit(hits)
                     .collect(Collectors.toList());
         } catch (JsonProcessingException | IllegalArgumentException e) {
-            log.error("Error fetch Items", e);
-            return null;
+            log.error("Error fetch All Items", e);
+            return Collections.emptyList();
+        }
+    }
+
+    @Override
+    public List<DmmItem> fetchAllItems() {
+        try {
+            return new ArrayList<>(fetchAllItemFromRemote().getItems());
+        } catch (JsonProcessingException e) {
+            log.error("Error fetch All Items", e);
+            return Collections.emptyList();
         }
     }
 

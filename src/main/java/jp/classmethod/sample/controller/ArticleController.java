@@ -23,9 +23,15 @@ public class ArticleController {
     private final DmmService dmmService;
 
     @GetMapping("/dmm/random")
-    public ResponseEntity<List<DmmItem>> getArticle(@RequestParam(value = "hits", required = false) Integer hits) {
+    public ResponseEntity<DmmItem> getArticle(@RequestParam(value = "hits", required = false) Integer hits) {
+        var maybeItem = dmmService.getRandomItem();
+        return ResponseEntity.of(maybeItem);    // TODO: これでやるとContentTypeとかの制御がきかんのだが？？
+    }
+    
+    @GetMapping("/dmm")
+    public ResponseEntity<List<DmmItem>> getItems(@RequestParam(value = "hits", required = false) Integer hits) {
         try {
-            var response = Optional.ofNullable(dmmService.getDmmContents(hits)).orElseThrow();
+            var response = Optional.ofNullable(dmmService.getItems(hits)).orElseThrow();
             return ResponseEntity.status(HttpStatus.OK)
                     .contentType(MediaType.APPLICATION_JSON)
                     .body(response);
@@ -34,4 +40,6 @@ public class ArticleController {
             return ResponseEntity.notFound().build();
         }
     }
+    
+    
 }
